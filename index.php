@@ -13,7 +13,7 @@ $whoops->register();
 $router = new Router();
 
 $router->get('/', function () {
-  echo "hi";
+  view("home");
 });
 
 $router->run();
