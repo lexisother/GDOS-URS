@@ -3,5 +3,13 @@
     "bramus/router": "^1.6",
     "scssphp/scssphp": "^1.10",
     "filp/whoops": "^2.14"
+  },
+  "autoload": {
+    "psr-4": {
+      "Extersia\\": "Extersia/"
+    },
+    "files": [
+      "helpers.php"
+    ]
   }
 }
