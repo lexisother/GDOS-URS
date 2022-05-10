@@ -12,7 +12,8 @@ $whoops->register();
 
 $router = new Router();
 
-$router->get('/', function () {
+// TODO: Split up POST logic to another route
+$router->all('/', function () {
   view("home");
 });
 
