@@ -1,5 +1,5 @@
 <?php
-# Load Composer
+// Load Composer
 require __DIR__ . "/vendor/autoload.php";
 
 use Bramus\Router\Router;

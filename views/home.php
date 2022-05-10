@@ -7,9 +7,12 @@ if ($connection->connect_error) {
   throw new RuntimeException("Connection failed: ", $connection->connect_error);
 }
 
+// Get the lists of items for the dropdowns, note that mysqli_result implements
+// IteratorAggregate, so it is iterable
 $activities = $connection->query("SELECT * FROM activiteit");
 $members = $connection->query("SELECT * FROM medewerker WHERE actief = 'ja'");
 
+// If we are POSTing, do the database pushing
 if (isset($_POST["name"])) {
   $user = $connection->query("SELECT * FROM medewerker WHERE naam = '{$_POST["name"]}'")->fetch_assoc();
   $activity = $connection->query("SELECT * FROM activiteit WHERE naam = '{$_POST['activity']}'")->fetch_assoc();
@@ -59,6 +62,7 @@ if (isset($_POST["name"])) {
     </th>
   </tr>
   <?php
+  // Generate the table contents
   $items = $connection->query("SELECT * FROM urenregistratie");
   foreach ($items as $item) {
     $activity = $connection->query("SELECT activiteit.naam FROM activiteit WHERE activiteit.activiteit_id = '{$item["activiteit_id"]}'")->fetch_assoc()["naam"];
