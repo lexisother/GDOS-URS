@@ -54,18 +54,22 @@ if (isset($_POST["name"])) {
     <th>
       Minuten
     </th>
+    <th>
+      Datum
+    </th>
   </tr>
   <?php
   $items = $connection->query("SELECT * FROM urenregistratie");
   foreach ($items as $item) {
     $activity = $connection->query("SELECT activiteit.naam FROM activiteit WHERE activiteit.activiteit_id = '{$item["activiteit_id"]}'")->fetch_assoc()["naam"];
     $user = $connection->query("SELECT medewerker.naam FROM medewerker WHERE medewerker.medewerker_id = '{$item["medewerker_id"]}'")->fetch_assoc()["naam"];
-    $duration = $connection->query("SELECT urenregistratie.minuten FROM urenregistratie WHERE urenregistratie.activiteit_id = '{$item["activiteit_id"]}'")->fetch_assoc()["minuten"];
+    $trackedItem = $connection->query("SELECT urenregistratie.minuten, urenregistratie.datum FROM urenregistratie WHERE urenregistratie.activiteit_id = '{$item["activiteit_id"]}'")->fetch_assoc();
 
     echo "<tr>";
     echo "<td>{$activity}</td>";
     echo "<td>{$user}</td>";
-    echo "<td>{$duration}</td>";
+    echo "<td>{$trackedItem["minuten"]}</td>";
+    echo "<td>{$trackedItem["datum"]}</td>";
     echo "</tr>";
   }
   ?>
