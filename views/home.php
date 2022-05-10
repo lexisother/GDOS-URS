@@ -43,12 +43,44 @@ if (isset($_POST["name"])) {
   <input type="submit" />
 </form>
 
-<?php
-$items = $connection->query("SELECT * FROM urenregistratie");
-foreach ($items as $item) {
-  $activity = $connection->query("SELECT activiteit.naam FROM activiteit WHERE activiteit.activiteit_id = '{$item["activiteit_id"]}'")->fetch_assoc()["naam"];
-  $user = $connection->query("SELECT medewerker.naam FROM medewerker WHERE medewerker.medewerker_id = '{$item["medewerker_id"]}'")->fetch_assoc()["naam"];
+<table>
+  <tr>
+    <th>
+      Activiteit
+    </th>
+    <th>
+      Medewerker
+    </th>
+    <th>
+      Minuten
+    </th>
+  </tr>
+  <?php
+  $items = $connection->query("SELECT * FROM urenregistratie");
+  foreach ($items as $item) {
+    $activity = $connection->query("SELECT activiteit.naam FROM activiteit WHERE activiteit.activiteit_id = '{$item["activiteit_id"]}'")->fetch_assoc()["naam"];
+    $user = $connection->query("SELECT medewerker.naam FROM medewerker WHERE medewerker.medewerker_id = '{$item["medewerker_id"]}'")->fetch_assoc()["naam"];
+    $duration = $connection->query("SELECT urenregistratie.minuten FROM urenregistratie WHERE urenregistratie.activiteit_id = '{$item["activiteit_id"]}'")->fetch_assoc()["minuten"];
 
-  echo "{$activity}<br>{$user}<br><br>";
-}
-?>
+    echo "<tr>";
+    echo "<td>{$activity}</td>";
+    echo "<td>{$user}</td>";
+    echo "<td>{$duration}</td>";
+    echo "</tr>";
+  }
+  ?>
+</table>
+
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+</style>
