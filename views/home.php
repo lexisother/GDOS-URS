@@ -1,6 +1,8 @@
 <?php
 // TODO: See the note in index.php
 
+include "components/head.php";
+
 $connection = new mysqli("localhost", "root", "root", "URS");
 
 if ($connection->connect_error) {
@@ -166,17 +168,3 @@ if (isset($_POST["name"])) {
   }
   ?>
 </table>
-
-<style>
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-  }
-
-  td,
-  th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-</style>

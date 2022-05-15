@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: black;
+}
+
+a {
+  color: #3273dc;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+  }
+}
