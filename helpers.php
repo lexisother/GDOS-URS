@@ -14,6 +14,17 @@ function projectRoot()
   return __DIR__;
 }
 
+/**
+ * Fetch the database connection.
+ * TODO: Make this part of Extersia.
+ *
+ * @return mysqli
+ */
+function getConn()
+{
+  return new mysqli("localhost", "root", "root", "URS");
+}
+
 
 function includeWithVariables($filePath, $variables = array(), $print = true)
 {

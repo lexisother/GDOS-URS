@@ -17,4 +17,14 @@ $router->all('/', function () {
   view("home");
 });
 
+$router->mount("/overview", function () use ($router) {
+  $router->all("/", function () {
+    view("overview");
+  });
+
+  $router->all("/total", function () {
+    view("total");
+  });
+});
+
 $router->run();
