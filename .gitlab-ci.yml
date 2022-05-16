@@ -14,7 +14,6 @@ before_script:
   - php composer-setup.php
   - php -r "unlink('composer-setup.php'); unlink('installer.sig');"
   - php composer.phar install
-  - php composer.phar require tightenco/tlint
 
 lint:
   script:

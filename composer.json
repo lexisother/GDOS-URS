@@ -2,7 +2,8 @@
   "require": {
     "bramus/router": "^1.6",
     "scssphp/scssphp": "^1.10",
-    "filp/whoops": "^2.14"
+    "filp/whoops": "^2.14",
+    "tightenco/tlint": "^6.3"
   },
   "autoload": {
     "psr-4": {
