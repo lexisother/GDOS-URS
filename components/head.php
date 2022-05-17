@@ -25,12 +25,29 @@ foreach (new DirectoryIterator(projectRoot() . '/scss') as $file) {
 
 // Merge the index file with all the others.
 $res = $index . $res;
+
+// Construct the page title.
+// Whoever has the pleasure of viewing this, yes, I am keeping the nested
+// ternary expression.
+$title = isset($pageTitle)
+  ? (!empty($pageTitle)
+    ? "{$pageTitle} | Tijdsregistratie"
+    : "Tijdsregistratie")
+  : "Tijdsregistratie";
 ?>
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Tijdsregistratie</title>
+  <title><?= $title ?></title>
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="<?= $title ?>" />
+
+  <meta name="twitter:title" content="<?= $title ?>" />
+  <meta name="twitter:site" content="@lexisother" />
+  <meta name="twitter:creator" content="@lexisother" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <style>
     <?php echo $res; ?>

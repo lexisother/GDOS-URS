@@ -1,6 +1,6 @@
 <?php
 
-include "components/head.php";
+includeWithVariables(projectRoot() . '/templates/base.php', ['pageTitle' => 'Totaal']);
 
 $connection = getConn();
 
