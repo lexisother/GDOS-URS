@@ -13,30 +13,24 @@ if ($connection->connect_error) {
 // IteratorAggregate, so it is iterable
 $activities = $connection->query("SELECT * FROM activiteit");
 $members = $connection->query("SELECT * FROM medewerker WHERE actief = 'ja'");
-
-if (isset($_POST["name"])) {
-  foreach ($_POST as $key => $value) {
-    if (!str_starts_with($key, "min-")) continue;
-    $name = str_replace("min-", "", $key);
-    $finalName = str_replace("-", " ", $name);
-
-    $minuten = $_POST[$key];
-    if (!$minuten) continue;
-
-    $activiteit = $connection->query("SELECT * FROM activiteit WHERE naam = '{$finalName}'")->fetch_assoc();
-
-    $medewerker = $connection->query("SELECT * FROM medewerker WHERE naam = '{$_POST["name"]}'")->fetch_assoc();
-
-    $sql = "INSERT INTO urenregistratie (medewerker_id,datum,activiteit_id,minuten)
-     VALUES ('{$medewerker["medewerker_id"]}', DATE '{$_POST["date"]}', '{$activiteit["activiteit_id"]}', '{$minuten}')";
-
-    $connection->query($sql);
-  }
-}
-
 ?>
 
-<form action="/" method="post">
+
+
+<?php if (isset($_SESSION["error"])) { ?>
+  <div class="notice red">
+    <p>Er ging iets mis!</p>
+  </div>
+<?php } ?>
+
+
+<?php if (isset($_SESSION["success"])) { ?>
+  <div class="notice green">
+    <p>Alles klaar!</p>
+  </div>
+<?php } ?>
+
+<form action="/api/submit" method="post">
   <label>Naam</label>
   <select name="name" id="name">
     <?php
@@ -59,3 +53,5 @@ if (isset($_POST["name"])) {
 
   <input type="submit" />
 </form>
+
+<?php $_SESSION = []; ?>
