@@ -23,6 +23,69 @@ a {
   }
 }
 
+input {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  line-height: inherit;
+  color: inherit;
+}
+
+input[type='date'] {
+  width: 30rem;
+}
+
+input[type='submit'] {
+  display: block;
+  margin: 0 auto;
+  margin-left: 5rem;
+  margin-right: 5rem;
+
+  // HACK: Precice width.
+  width: 87.4% !important;
+}
+
+select {
+  border-right: 1rem solid transparent !important;
+  background-position: center right;
+  background-repeat: no-repeat;
+  color: inherit;
+  font-size: inherit;
+  margin: 0;
+  overflow: hidden;
+  padding-top: 1.3rem !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Builtin WebKit pseudo-elements {{{
+::-webkit-datetime-edit {
+  padding: 1rem;
+  color: white;
+}
+::-webkit-calendar-picker-indicator {
+  // HACK: using `color` is not allowed, so inverting it will have to do!
+  filter: invert(1);
+  padding: 1rem;
+}
+// }}}
+
+.container {
+  display: flex;
+  //  TODO: Fix weird offset issue.
+  flex-direction: column;
+  justify-content: center;
+}
+
 .header {
   text-align: center;
+}
+
+.input-box {
+  flex: none;
+  width: 30rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
+  height: 4rem;
 }

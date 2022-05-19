@@ -26,6 +26,10 @@
 .flex-row {
   flex-direction: row;
 }
+.flex-none {
+  flex: none;
+  flex-flow: inherit !important;
+}
 .gap-1 {
   gap: 2rem;
 }
@@ -47,6 +51,12 @@
 }
 .justify-items-center {
   justify-items: center;
+}
+.justify-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 .h-6 {
   height: 1.5rem;

@@ -1,0 +1,15 @@
+.itemgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+.griditem {
+  display: flex;
+  flex-flow: column;
+
+  min-height: 4rem;
+  border: solid 1px black;
+  background-color: rgba(31, 36, 44, 1);
+}
