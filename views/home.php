@@ -15,8 +15,6 @@ $activities = $connection->query("SELECT * FROM activiteit");
 $members = $connection->query("SELECT * FROM medewerker WHERE actief = 'ja'");
 ?>
 
-
-
 <?php if (isset($_SESSION["error"])) { ?>
   <div class="notice red">
     <p>Er ging iets mis!</p>

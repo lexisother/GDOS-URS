@@ -45,12 +45,21 @@ $router->mount("/api", function () use ($router) {
         $minuten = $_POST[$key];
         if (!$minuten) continue;
 
-        $activiteit = $connection->query("SELECT * FROM activiteit WHERE naam = '{$finalName}'")->fetch_assoc();
-
-        $medewerker = $connection->query("SELECT * FROM medewerker WHERE naam = '{$_POST["name"]}'")->fetch_assoc();
-
-        $sql = "INSERT INTO urenregistratie (medewerker_id,datum,activiteit_id,minuten)
-     VALUES ('{$medewerker["medewerker_id"]}', DATE '{$_POST["date"]}', '{$activiteit["activiteit_id"]}', '{$minuten}')";
+        $sql = "
+          INSERT INTO
+              urenregistratie (
+                  medewerker_id,
+                  datum,
+                  activiteit_id,
+                  minuten
+              )
+          VALUES (
+              (SELECT medewerker_id FROM medewerker WHERE naam = '{$_POST["name"]}'),
+              DATE '{$_POST["date"]}',
+              (SELECT activiteit_id FROM activiteit WHERE naam = '{$finalName}'),
+              {$minuten}
+          )
+        ";
 
         $connection->query($sql);
 
