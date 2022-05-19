@@ -35,30 +35,34 @@ $overviewItems = $connection->query("
 ");
 ?>
 
-<h1>Overzicht</h1>
-<table>
-    <tr>
-        <th>
-            Activiteit
-        </th>
-        <th>
-            Medewerker
-        </th>
-        <th>
-            Minuten
-        </th>
-        <th>
-            Datum
-        </th>
-    </tr>
-    <?php
-    foreach ($overviewItems as $item) {
-        echo "<tr>";
-        echo "<td>{$item["activiteit"]}</td>";
-        echo "<td>{$item["medewerker"]}</td>";
-        echo "<td>{$item["minuten"]}</td>";
-        echo "<td>{$item["datum"]}</td>";
-        echo "</tr>";
-    }
-    ?>
-</table>
+<div class="overview-container flex-column">
+    <h1 class="header">Overzicht</h1>
+    <div class="tables-container flex-row">
+        <table class="item">
+            <tr>
+                <th>
+                    Activiteit
+                </th>
+                <th>
+                    Medewerker
+                </th>
+                <th>
+                    Minuten
+                </th>
+                <th>
+                    Datum
+                </th>
+            </tr>
+            <?php
+            foreach ($overviewItems as $item) {
+                echo "<tr>";
+                echo "<td>{$item["activiteit"]}</td>";
+                echo "<td>{$item["medewerker"]}</td>";
+                echo "<td>{$item["minuten"]}</td>";
+                echo "<td>{$item["datum"]}</td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
+    </div>
+</div>

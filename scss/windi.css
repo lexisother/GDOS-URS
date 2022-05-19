@@ -20,6 +20,21 @@
   display: -webkit-flex;
   display: flex;
 }
+.flex-column {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+.gap-1 {
+  gap: 2rem;
+}
+.gap-2 {
+  gap: 2rem;
+}
+.gap-3 {
+  gap: 3rem;
+}
 .grid {
   display: -ms-grid;
   display: grid;

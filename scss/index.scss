@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 
+:root {
+  --tw-gradient-from: rgba(17, 21, 26, var(--tw-from-opacity, 1));
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  --tw-gradient-to: rgba(44, 50, 60, var(--tw-to-opacity, 1));
+}
+
 body {
   font-family: 'IBM Plex Sans', sans-serif;
-  color: black;
+  color: white;
+  margin: 0 auto;
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
 
 a {
@@ -13,4 +21,8 @@ a {
     text-decoration: underline;
     text-decoration-style: dotted;
   }
+}
+
+.header {
+  text-align: center;
 }

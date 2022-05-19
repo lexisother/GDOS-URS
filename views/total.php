@@ -69,62 +69,66 @@ $totalUsers = $connection->query("
 
 ?>
 
-<h1>Totaalaantallen</h1>
-<table>
-    <tr>
-        <th>
-            Medewerker
-        </th>
-        <th>
-            Activiteit
-        </th>
-        <th>
-            Totaal
-        </th>
-    </tr>
-    <?php
-    foreach ($totalItems as $item) {
-        echo "<tr>";
-        echo "<td>{$item["medewerker"]}</td>";
-        echo "<td>{$item["activiteit"]}</td>";
-        echo "<td>{$item["totaal"]}</td>";
-        echo "</tr>";
-    }
-    ?>
-</table>
-<table>
-    <tr>
-        <th>
-            Activiteit
-        </th>
-        <th>
-            Totaal
-        </th>
-    </tr>
-    <?php
-    foreach ($totalActs as $item) {
-        echo "<tr>";
-        echo "<td>{$item["activiteit"]}</td>";
-        echo "<td>{$item["totaal"]}</td>";
-        echo "</tr>";
-    }
-    ?>
-</table>
-<table>
-    <tr>
-        <th>
-            Medewerker
-        </th>
-        <th>
-            Totaal
-        </th>
-    </tr>
-    <?php
-    foreach ($totalUsers as $item) {
-        echo "<tr>";
-        echo "<td>{$item["medewerker"]}</td>";
-        echo "<td>{$item["totaal"]}</td>";
-        echo "</tr>";
-    }
-    ?>
-</table>
+<div class="total-container flex-column">
+    <h1 class="header">Totaalaantallen</h1>
+    <div class="tables-container flex-row gap-2">
+        <table class="item">
+            <tr>
+                <th>
+                    Medewerker
+                </th>
+                <th>
+                    Activiteit
+                </th>
+                <th>
+                    Totaal
+                </th>
+            </tr>
+            <?php
+            foreach ($totalItems as $item) {
+                echo "<tr>";
+                echo "<td>{$item["medewerker"]}</td>";
+                echo "<td>{$item["activiteit"]}</td>";
+                echo "<td>{$item["totaal"]}</td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
+        <table class="item">
+            <tr>
+                <th>
+                    Activiteit
+                </th>
+                <th>
+                    Totaal
+                </th>
+            </tr>
+            <?php
+            foreach ($totalActs as $item) {
+                echo "<tr>";
+                echo "<td>{$item["activiteit"]}</td>";
+                echo "<td>{$item["totaal"]}</td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
+        <table class="item">
+            <tr>
+                <th>
+                    Medewerker
+                </th>
+                <th>
+                    Totaal
+                </th>
+            </tr>
+            <?php
+            foreach ($totalUsers as $item) {
+                echo "<tr>";
+                echo "<td>{$item["medewerker"]}</td>";
+                echo "<td>{$item["totaal"]}</td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
+    </div>
+</div>
