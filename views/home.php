@@ -1,7 +1,7 @@
 <?php
 // TODO: See the note in index.php
 
-include "templates/base.php";
+require "templates/base.php";
 
 $connection = getConn();
 

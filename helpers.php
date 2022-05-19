@@ -37,7 +37,7 @@ function includeWithVariables($filePath, $variables = array(), $print = true)
     ob_start();
 
     // Include the template file
-    include $filePath;
+    require $filePath;
 
     // End buffering and return its contents
     $output = ob_get_clean();
@@ -66,7 +66,7 @@ function view($viewName, $variables = array())
   ob_start();
 
   // Include the template file
-  include $view;
+  require $view;
 
   // End buffering and return its contents
   $output = ob_get_clean();
