@@ -11,6 +11,8 @@ body {
   color: white;
   margin: 0 auto;
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 a {
