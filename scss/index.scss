@@ -32,7 +32,7 @@ input {
 }
 
 input[type='date'] {
-  width: 30rem;
+  width: 100%;
 }
 
 input[type='submit'] {
@@ -42,7 +42,7 @@ input[type='submit'] {
   margin-right: 5rem;
 
   // HACK: Precice width.
-  width: 87.4% !important;
+  width: 90.6% !important;
 }
 
 select {
@@ -75,6 +75,9 @@ select {
   //  TODO: Fix weird offset issue.
   flex-direction: column;
   justify-content: center;
+  max-width: 100%;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 
 .header {
@@ -83,9 +86,7 @@ select {
 
 .input-box {
   flex: none;
-  width: 30rem;
+  width: 100%;
   padding: 1rem;
   margin-bottom: 0.5rem;
-  margin-right: 1rem;
-  height: 4rem;
 }
