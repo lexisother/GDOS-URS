@@ -25,6 +25,11 @@ a {
   }
 }
 
+form {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
 input {
   font-family: inherit;
   font-size: 100%;
@@ -39,12 +44,6 @@ input[type='date'] {
 
 input[type='submit'] {
   display: block;
-  margin: 0 auto;
-  margin-left: 5rem;
-  margin-right: 5rem;
-
-  // HACK: Precice width.
-  width: 90.6% !important;
 }
 
 select {
