@@ -42,7 +42,7 @@ $members = $connection->query("SELECT * FROM medewerker WHERE actief = 'ja'");
       </div>
       <div>
         <label>datum</label>
-        <input required class="griditem flex-none shadow-md" type="date" name="date" id="date" min=<?php echo date('Y-m-d') ?> max=<?php echo date('Y') . "-12-31" ?> />
+        <input required class="griditem flex-none shadow-md" type="date" name="date" id="date" min=<?php echo date('Y-m-d', strtotime("-2 weeks")) ?> max=<?php echo date('Y-m-d') ?> />
       </div>
       <?php
       foreach ($activities as $activity) {
