@@ -46,8 +46,6 @@ $totalActs = $connection->query("
         (
             u.activiteit_id = a.activiteit_id
         )
-    WHERE
-        a.actief = 'ja'
     GROUP BY
     	a.naam;
 ");
@@ -64,8 +62,6 @@ $totalUsers = $connection->query("
         (
             u.medewerker_id = m.medewerker_id
         )
-    WHERE
-        m.actief = 'ja'
     GROUP BY
     	m.naam;
 ");

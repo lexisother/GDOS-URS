@@ -11,7 +11,7 @@ if ($connection->connect_error) {
 
 // Get the lists of items for the dropdowns, note that mysqli_result implements
 // IteratorAggregate, so it is iterable
-$activities = $connection->query("SELECT * FROM activiteit");
+$activities = $connection->query("SELECT * FROM activiteit WHERE actief = 'ja'");
 $members = $connection->query("SELECT * FROM medewerker WHERE actief = 'ja'");
 ?>
 <div class="container">
