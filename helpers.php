@@ -22,7 +22,7 @@ function projectRoot()
  */
 function getConn()
 {
-  return new mysqli("localhost", "root", "root", "URS");
+  return new mysqli(getenv('GITHUB_API_URL') ? "mariadb" : "localhost", "root", "root", "URS");
 }
 
 
