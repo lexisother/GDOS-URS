@@ -2,18 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\Entry;
+use Illuminate\Database\Capsule\Manager;
 use Illuminate\Http\Request;
-use RuntimeException;
 
 class ApiController
 {
     public function submit(Request $request)
     {
-        $connection = getConn();
-        if ($connection->connect_error) {
-            throw new RuntimeException("Connection failed: ", $connection->connect_error);
-        }
-
         if ($request->get('name')) {
             foreach ($request->all() as $key => $_) {
                 if (!str_starts_with($key, "min-")) continue;
@@ -23,30 +19,13 @@ class ApiController
                 $minuten = $request->get($key);
                 if (!$minuten) continue;
 
-                $sql = "
-                INSERT INTO
-                    urenregistratie (
-                        medewerker_id,
-                        datum,
-                        activiteit_id,
-                        minuten
-                    )
-                VALUES (
-                    (SELECT medewerker_id FROM medewerker WHERE naam = '{$_POST["name"]}'),
-                    DATE '{$_POST["date"]}',
-                    (SELECT activiteit_id FROM activiteit WHERE naam = '{$finalName}'),
-                    {$minuten}
-                )
-                ";
+                Entry::create([
+                    'medewerker_id' => Manager::table('medewerker')->where('naam', $request->get('name'))->get()[0]->medewerker_id,
+                    'datum' => $request->get('date'),
+                    'activiteit_id' => Manager::table('activiteit')->where('naam', $finalName)->get()[0]->activiteit_id,
+                    'minuten' => $minuten,
+                ]);
 
-                $connection->query($sql);
-
-                if (!$connection->error) {
-                    $_SESSION['success'] = 'ok';
-                } else {
-                    $_SESSION['error'] = $connection->error;
-                }
-                // header('Location: /');
                 echo "<script>window.location.href='/';</script>";
             }
         }

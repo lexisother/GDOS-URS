@@ -6,7 +6,7 @@ use Illuminate\Routing\Router;
 
 $router->get('/', function () {
     view('home');
-})->name('home');
+});
 
 $router->group(['prefix' => 'overview'], function (Router $router) {
     $router->get('/', function () {
