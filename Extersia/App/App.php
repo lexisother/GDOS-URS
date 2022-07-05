@@ -12,6 +12,13 @@ use RuntimeException;
 class App
 {
   /**
+   * The application namespace.
+   * 
+   * @var string
+   */
+  protected static $namespace;
+
+  /**
    * @var \Extersia\Filesystem\Filesystem
    */
   private static $files;
@@ -20,13 +27,6 @@ class App
    * @var \Extersia\View\FileViewFinder
    */
   private static $viewFinder;
-
-  /**
-   * The application namespace.
-   * 
-   * @var string
-   */
-  protected static $namespace;
 
   /**
    * Return the App's Filesystem instance.

@@ -17,4 +17,4 @@ before_script:
 
 lint:
   script:
-    - ./vendor/bin/tlint lint views
+    - ./vendor/bin/tlint lint
