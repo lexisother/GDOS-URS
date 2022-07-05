@@ -4,6 +4,7 @@ namespace Extersia\App;
 
 use Extersia\Filesystem\Filesystem;
 use Extersia\View\FileViewFinder;
+use RuntimeException;
 
 /**
  * The main App class, the one who oversees all.
@@ -19,6 +20,13 @@ class App
    * @var \Extersia\View\FileViewFinder
    */
   private static $viewFinder;
+
+  /**
+   * The application namespace.
+   * 
+   * @var string
+   */
+  protected static $namespace;
 
   /**
    * Return the App's Filesystem instance.
@@ -47,5 +55,31 @@ class App
   {
     self::$files = new Filesystem;
     self::$viewFinder = new FileViewFinder(self::$files, [projectRoot() . '/views']);
+  }
+
+  /**
+   * Get the application namespace.
+   * 
+   * @return string
+   * 
+   * @throws \RuntimeException
+   */
+  public static function getNamespace()
+  {
+    if (!is_null(self::$namespace)) {
+      return self::$namespace;
+    }
+
+    $composer = json_decode(file_get_contents(fullRoot() . '/composer.json'), true);
+
+    foreach ((array) data_get($composer, 'autoload.psr-4') as $namespace => $path) {
+      foreach ((array) $path as $pathChoice) {
+        if (realpath(fullRoot() . '/src') == realpath(fullRoot() . '/' . $pathChoice)) {
+          return self::$namespace = $namespace;
+        }
+      }
+    }
+
+    throw new RuntimeException('Unable to detect application namespace.');
   }
 }

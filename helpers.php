@@ -25,6 +25,16 @@ function projectRoot()
 }
 
 /**
+ * Returns the full root.
+ * 
+ * @return string
+ */
+function fullRoot()
+{
+  return __DIR__;
+}
+
+/**
  * Fetch the database connection.
  * TODO: Make this part of Extersia.
  *

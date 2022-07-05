@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Console\Application;
+use Illuminate\Container\Container;
+use Illuminate\Events\Dispatcher;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$container = new Container();
+$events = new Dispatcher($container);
+
+$artisan = new Application($container, $events, 'Version 1');
+$artisan->setName('GDOS Artisan');
+
+$artisan->resolve(ModelMakeCommand::class);
+
+$artisan->run();
