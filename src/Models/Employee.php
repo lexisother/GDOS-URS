@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Entry extends Model
+class Employee extends Model
 {
     /**
      * Indicates if the model should be timestamped.
@@ -18,24 +18,24 @@ class Entry extends Model
      * 
      * @var string
      */
-    protected $table = 'urenregistratie';
+    protected $table = 'medewerker';
 
     /**
      * The primary key associated with the table.
      * 
      * @var string
      */
-    protected $primary_key = 'urenregistratie_id';
+    protected $primary_key = 'medewerker_id';
 
     /**
      * The attributes that are mass assignable.
-     * 
+     *
      * @var array<int, string>
      */
     protected $fillable = [
-        'medewerker_id',
-        'datum',
-        'activiteit_id',
-        'minuten',
+        'naam',
+        'email',
+        'groep',
+        'actief',
     ];
 }

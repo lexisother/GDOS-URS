@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\Activity;
+use App\Models\Employee;
 use App\Models\Entry;
-use Illuminate\Database\Capsule\Manager;
 use Illuminate\Http\Request;
 
 class ApiController
@@ -20,9 +21,9 @@ class ApiController
                 if (!$minuten) continue;
 
                 Entry::create([
-                    'medewerker_id' => Manager::table('medewerker')->where('naam', $request->get('name'))->get()[0]->medewerker_id,
+                    'medewerker_id' => Employee::where('naam', 'Alyxia Sother')->first()->medewerker_id,
                     'datum' => $request->get('date'),
-                    'activiteit_id' => Manager::table('activiteit')->where('naam', $finalName)->get()[0]->activiteit_id,
+                    'activiteit_id' => Activity::where('naam', $finalName)->first()->activiteit_id,
                     'minuten' => $minuten,
                 ]);
 
