@@ -21,7 +21,7 @@ function app($abstract = null, array $parameters = [])
  */
 function projectRoot()
 {
-  return __DIR__ . '/src';
+  return __DIR__ . '/resources';
 }
 
 /**
