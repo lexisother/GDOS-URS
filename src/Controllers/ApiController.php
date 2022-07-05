@@ -21,7 +21,7 @@ class ApiController
                 if (!$minuten) continue;
 
                 Entry::create([
-                    'medewerker_id' => Employee::where('naam', 'Alyxia Sother')->first()->medewerker_id,
+                    'medewerker_id' => Employee::where('naam', $request->get('name'))->first()->medewerker_id,
                     'datum' => $request->get('date'),
                     'activiteit_id' => Activity::where('naam', $finalName)->first()->activiteit_id,
                     'minuten' => $minuten,
