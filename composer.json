@@ -8,7 +8,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Extersia\\": "Extersia/"
+      "Extersia\\": "Extersia/",
+      "App\\": "src/"
     },
     "files": [
       "helpers.php"

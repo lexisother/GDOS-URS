@@ -1,7 +1,7 @@
 <?php
 // TODO: See the note in index.php
 
-require "templates/base.php";
+require projectRoot() . "/templates/base.php";
 
 $connection = getConn();
 
@@ -28,7 +28,7 @@ $members = $connection->query("SELECT * FROM medewerker WHERE actief = 'ja'");
     </div>
   <?php } ?>
 
-  <form action=" /api/submit" method="post">
+  <form action="/api/submit" method="post">
     <div class="itemgrid">
       <div>
         <label>Naam</label>

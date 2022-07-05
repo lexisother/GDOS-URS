@@ -1,8 +1,18 @@
 <?php
 
 use Extersia\App\App;
+use Illuminate\Container\Container;
 
 App::initialize();
+
+function app($abstract = null, array $parameters = [])
+{
+  if (is_null($abstract)) {
+    return Container::getInstance();
+  }
+
+  return Container::getInstance()->make($abstract, $parameters);
+}
 
 /**
  * Returns the project root.
@@ -11,7 +21,7 @@ App::initialize();
  */
 function projectRoot()
 {
-  return __DIR__;
+  return __DIR__ . '/src';
 }
 
 /**

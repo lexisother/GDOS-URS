@@ -20,7 +20,7 @@ $whoops->pushHandler(new PrettyPageHandler());
 $whoops->register();
 
 // Create our service container
-$container = new Container();
+$container = app();
 
 // Create a request from server variables, and bind it to the container (this is optional)
 $request = Request::capture();
@@ -41,6 +41,9 @@ require_once 'routes.php';
 // return $redirect->back();
 // return $redirect->to('/');
 $redirect = new Redirector(new UrlGenerator($router->getRoutes(), $request));
+$container->bind('redirect', function () use ($redirect) {
+    return $redirect;
+});
 
 // Dispatch the request through the router
 $response = $router->dispatch($request);
