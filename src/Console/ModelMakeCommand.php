@@ -57,8 +57,7 @@ class ModelMakeCommand extends Command
             return false;
         }
 
-        print($path . PHP_EOL);
-        print($this->buildClass($name) . PHP_EOL);
+        file_put_contents($path, $this->buildClass($name));
 
         $this->info($this->type . ' created successfully.');
     }
